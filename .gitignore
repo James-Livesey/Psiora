@@ -10,3 +10,9 @@ Win32/*
 *.VC.opendb
 *.VC.db
 *.vcxproj.user
+*.o
+.qmake.stash
+moc_*
+qrc_resources.cpp
+ui_createpakdialog.h
+ui_mainwindow.h
