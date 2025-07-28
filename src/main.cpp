@@ -15,25 +15,31 @@ int main(int argc, char *argv[])
 
     QCommandLineOption romFileOption(
         {"r", "rom-file"},
-        "Path to ROM file to boot",
+        "Path to ROM file to boot.",
         "file"
     );
 
     QCommandLineOption pakBFileOption(
         {"b", "pak-b-file"},
-        "Path to OPK file to use for the slot B datapack",
+        "Path to OPK file to use for the slot B datapack.",
         "file"
     );
 
     QCommandLineOption pakCFileOption(
         {"c", "pak-c-file"},
-        "Path to OPK file to use for the slot C datapack",
+        "Path to OPK file to use for the slot C datapack.",
         "file"
+    );
+
+    QCommandLineOption skipCloseConfirmation(
+        "no-close-confirm",
+        "Skip confirmation dialog when closing application."
     );
 
     parser.addOption(romFileOption);
     parser.addOption(pakBFileOption);
     parser.addOption(pakCFileOption);
+    parser.addOption(skipCloseConfirmation);
 
     parser.process(app);
 
@@ -53,6 +59,10 @@ int main(int argc, char *argv[])
         if (!pakCFile.isEmpty()) emucore->insertPak(0, pakCFile.toStdString());
 
         emucore->setPower(true);
+    }
+
+    if (parser.isSet(skipCloseConfirmation)) {
+        mainWin.setSkipCloseConfirmation(true);
     }
 
     app.exec();

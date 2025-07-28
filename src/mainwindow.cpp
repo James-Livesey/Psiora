@@ -40,6 +40,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 	QString message = "An error occured while trying to save RAM. Changes to RAM cannot be saved at this time.";
 	if (suc == FILEIO_SaveFail_PowerOn) {
 		message = "The emulator is not switched off. Changes to RAM cannot be saved at this time.";
+		if (skipCloseConfirmation) return;
 	}
 	bool ret = popupDialogCustom(message, "Are you sure you want to quit anyway?", QMessageBox::Warning, "Quit Anyway");
 	if (!ret) {
@@ -76,6 +77,11 @@ void MainWindow::popupDialog(QString mainText, QString infoText, QMessageBox::Ic
 void* MainWindow::getDrawingArea()
 {
     return (void*) ui->widget->winId();
+}
+
+void MainWindow::setSkipCloseConfirmation(bool skip)
+{
+	skipCloseConfirmation = skip;
 }
 
 void MainWindow::on_actionLoad_ROM_triggered()

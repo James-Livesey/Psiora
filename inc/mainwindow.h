@@ -17,6 +17,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void* getDrawingArea();
+	void setSkipCloseConfirmation(bool skip);
 
 private slots:
 	void closeEvent(QCloseEvent *event);
@@ -41,6 +42,8 @@ private:
 
     Ui::MainWindow *ui;
 	QTimer *everySecondTimer;
+
+	bool skipCloseConfirmation = false;
 };
 
 #endif // MAINWINDOW_H
