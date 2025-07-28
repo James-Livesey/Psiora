@@ -40,7 +40,7 @@
   <property name="unifiedTitleAndToolBarOnMac">
    <bool>false</bool>
   </property>
-  <widget class="QWidget" name="centralWidget">
+  <widget class="QOpenGLWidget" name="centralWidget">
    <widget class="QWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
@@ -78,11 +78,16 @@
      <enum>Qt::NoContextMenu</enum>
     </property>
    </widget>
+  </widget>
+  <widget class="QStatusBar">
+   <property name="sizeGripEnabled">
+    <bool>false</bool>
+   </property>
    <widget class="QProgressBar" name="speed">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>170</y>
+      <y>0</y>
       <width>118</width>
       <height>23</height>
      </rect>
